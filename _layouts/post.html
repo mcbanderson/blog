@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<header class="jumbotron jumbo-overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{{ page.title }}</h1>
+                <p>{{ page.author }} - {{ page.date | date_to_string }}</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main id="content" class="container">
+    <div class="row">
+        <div class="col-md-12">
+            {{ content }}
+        </div>
+    </div>
+</main>
