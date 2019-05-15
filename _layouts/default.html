@@ -9,31 +9,10 @@
 
     <title>{{ page.title }}</title>
 
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
-    <!-- Popper.js, which is required by Bootstrap -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-        crossorigin="anonymous"></script>
-
-    <!-- Latest compiled and minified Bootstrap JavaScript -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{'assets/main.css' | prepend: site.baseurl}}">
 
     <!-- Google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Muli:200,400|Ovo" rel="stylesheet">
-
-    <!-- Latest compiled and minified Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-
-    <!-- Load favicon -->
-    <!-- <link rel="icon" href="images/MCBAndersonFavicon.png"> -->
-
-    <!-- Custom CSS -->
-    <!-- <link rel="stylesheet" type="text/css" href="style.css" /> -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway:300" rel="stylesheet">
 </head>
 
 <body>
@@ -45,6 +24,9 @@
 
     {% include footer.html %}
 
+    <script src="{{'node_modules/jquery/dist/jquery.min.js' | prepend: site.baseurl}}"></script>
+	<script src="{{'node_modules/popper.js/dist/umd/popper.min.js' | prepend: site.baseurl}}"></script>
+	<script src="{{'node_modules/bootstrap/dist/js/bootstrap.min.js' | prepend: site.baseurl}}"></script>
 </body>
 
 </html>
