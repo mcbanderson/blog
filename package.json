@@ -21,5 +21,7 @@
     "jquery": "^3.4.1",
     "popper.js": "^1.15.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "pa11y": "^5.1.0"
+  }
 }
