@@ -58,7 +58,7 @@ jobs:
           command: pip install awscli --upgrade --user
       - run:
           name: Deploy infrastructure with CloudFormation
-          command: ~/.local/bin/aws cloudformation deploy --region us-east-1 --stack-name $STACK_NAME --template-file template.yaml --parameter-overrides RootDomainName=$SITE_URL
+          command: ~/.local/bin/aws cloudformation deploy --region us-east-1 --stack-name $STACK_NAME --template-file template.yml --parameter-overrides RootDomainName=$SITE_URL
       - run:
           name: Upload to s3
           command: ~/.local/bin/aws s3 sync ./_site s3://$SITE_URL/ --delete --acl public-read
