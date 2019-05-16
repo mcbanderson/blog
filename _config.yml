@@ -60,3 +60,6 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - template.yml
+  - README.md
+  - package.json
+  - package-lock.json
