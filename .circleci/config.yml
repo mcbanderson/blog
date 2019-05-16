@@ -37,7 +37,8 @@ jobs:
               --allow-hash-href \
               --check-favicon  \
               --check-html \
-              --disable-external
+              --disable-external \
+              --file-ignore node_modules
       - persist_to_workspace:
           root: ./
           paths:
