@@ -51,9 +51,7 @@ Resources:
   myDNS:
     Type: AWS::Route53::RecordSetGroup
     Properties:
-      HostedZoneName: !Sub 
-          - ${Domain}.
-          - Domain: !Ref RootDomainName
+      HostedZoneName: "mcbanderson.com"
       Comment: Zone apex alias.
       RecordSets:
       - 
