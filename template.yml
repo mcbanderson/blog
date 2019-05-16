@@ -48,10 +48,10 @@ Resources:
       WebsiteConfiguration:
         RedirectAllRequestsTo:
           HostName: !Ref RootBucket
-  myDNS:
+  RecordSetGroup:
     Type: AWS::Route53::RecordSetGroup
     Properties:
-      HostedZoneName: "mcbanderson.com"
+      HostedZoneName: "mcbanderson.com."
       Comment: Zone apex alias.
       RecordSets:
       - 
