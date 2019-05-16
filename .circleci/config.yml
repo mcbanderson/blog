@@ -42,7 +42,7 @@ jobs:
       - run:
           name: pa11y tests
           command: |
-            pa11y ./_site/index.html
+            node_modules/.bin/pa11y ./_site/index.html
       - persist_to_workspace:
           root: ./
           paths:
