@@ -20,7 +20,7 @@ layout: default
 
             {% for post in site.posts %}
                 <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-                <p>{{ post.excerpt }}</p>
+                {{ post.excerpt }}
                 {% if post.previous.url %}
                     <hr>
                 {% endif %}
