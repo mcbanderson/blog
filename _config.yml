@@ -31,8 +31,6 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
-excerpt_separator: "<!--more-->"
-
 defaults:
   - scope:
       path: ""
