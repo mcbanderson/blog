@@ -38,7 +38,7 @@ jobs:
               --check-favicon  \
               --check-html \
               --disable-external \
-              --file-ignore _site/node_modules
+              --file-ignore "/node_modules/"
       - persist_to_workspace:
           root: ./
           paths:
