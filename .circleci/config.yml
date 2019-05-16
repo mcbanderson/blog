@@ -39,6 +39,10 @@ jobs:
               --check-html \
               --disable-external \
               --file-ignore "/node_modules/"
+      - run:
+          name: pa11y tests
+          command: |
+            pa11y ./_site/index.html
       - persist_to_workspace:
           root: ./
           paths:
