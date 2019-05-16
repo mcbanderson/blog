@@ -35,7 +35,7 @@ jobs:
           command: |
             bundle exec htmlproofer ./_site \
               --allow-hash-href \
-              --check-favicon  \
+              --check-favicon \
               --check-html \
               --disable-external \
               --file-ignore "/node_modules/"
@@ -65,7 +65,13 @@ jobs:
           command: ls -la
       - run:
           name: Deploy infrastructure with CloudFormation
-          command: ~/.local/bin/aws cloudformation deploy --region us-east-1 --stack-name $STACK_NAME --template-file template.yml --parameter-overrides RootDomainName=$SITE_URL
+          command: |
+            ~/.local/bin/aws cloudformation deploy \
+              --region us-east-1 \
+              --stack-name $STACK_NAME \
+              --template-file template.yml \
+              --no-fail-on-empty-changeset \
+              --parameter-overrides RootDomainName=$SITE_URL
       - run:
           name: Upload to s3
           command: ~/.local/bin/aws s3 sync ./_site s3://$SITE_URL/ --delete --acl public-read
