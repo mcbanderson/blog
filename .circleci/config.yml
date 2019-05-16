@@ -57,6 +57,12 @@ jobs:
           name: Install AWS CLI
           command: pip install awscli --upgrade --user
       - run:
+          name: pwd
+          command: pwd
+      - run:
+          name: ll
+          command: ls -la
+      - run:
           name: Deploy infrastructure with CloudFormation
           command: ~/.local/bin/aws cloudformation deploy --region us-east-1 --stack-name $STACK_NAME --template-file template.yml --parameter-overrides RootDomainName=$SITE_URL
       - run:
