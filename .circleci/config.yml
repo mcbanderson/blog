@@ -43,6 +43,7 @@ jobs:
           root: ./
           paths:
             - _site
+            - template.yml
   deploy:
     <<: *defaults
     docker:
