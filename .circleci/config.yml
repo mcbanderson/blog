@@ -40,18 +40,6 @@ jobs:
               --disable-external \
               --file-ignore "/node_modules/"
       - run:
-          name: Check bash version
-          command: bash --version
-      - run:
-          name: Check globstar
-          command: shopt
-      - run:
-          name: Turn on globstar
-          command: shopt -s globstar
-      - run:
-          name: Confirm globstar
-          command: shopt
-      - run:
           name: pa11y tests
           command: |
             find ./_site -iname "*\.html" -and -not -ipath "./_site/node_modules/*" | xargs node_modules/.bin/pa11y-ci
@@ -73,12 +61,6 @@ jobs:
       - run:
           name: Install AWS CLI
           command: pip install awscli --upgrade --user
-      - run:
-          name: pwd
-          command: pwd
-      - run:
-          name: ll
-          command: ls -la
       - run:
           name: Deploy infrastructure with CloudFormation
           command: |
