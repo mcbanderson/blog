@@ -55,7 +55,7 @@ jobs:
           name: pa11y tests
           shell: /bin/bash -eo pipefail -O globstar
           command: |
-            node_modules/.bin/pa11y-ci ./_site/**/*.html
+            node_modules/.bin/pa11y-ci [./_site/**/*.html, !./_site/node_modules/*]
       - persist_to_workspace:
           root: ./
           paths:
