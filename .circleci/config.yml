@@ -40,6 +40,12 @@ jobs:
               --disable-external \
               --file-ignore "/node_modules/"
       - run:
+          name: Check bash version
+          command: bash --version
+      - run:
+          name: Check globstar
+          command: shopt
+      - run:
           name: Turn on globstar
           command: shopt -s globstar
       - run:
