@@ -53,9 +53,8 @@ jobs:
           command: shopt
       - run:
           name: pa11y tests
-          shell: /bin/bash -eo pipefail -O globstar
           command: |
-            node_modules/.bin/pa11y-ci ['./_site/**/*.html','!./_site/node_modules/*']
+            find ./_site -iname "*\.html" -and -not -ipath "./_site/node_modules/*" | xargs node_modules/.bin/pa11y-ci
       - persist_to_workspace:
           root: ./
           paths:
