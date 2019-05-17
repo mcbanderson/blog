@@ -68,6 +68,9 @@ jobs:
           name: ll
           command: ls -la
       - run:
+          name: Turn on globstar
+          command: shopt -s globstar
+      - run:
           name: Deploy infrastructure with CloudFormation
           command: |
             ~/.local/bin/aws cloudformation deploy \
