@@ -53,6 +53,7 @@ jobs:
           command: shopt
       - run:
           name: pa11y tests
+          shell: /bin/bash -eo pipefail -O globstar
           command: |
             node_modules/.bin/pa11y-ci ./_site/**/*.html
       - persist_to_workspace:
