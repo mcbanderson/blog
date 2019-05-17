@@ -40,6 +40,9 @@ jobs:
               --disable-external \
               --file-ignore "/node_modules/"
       - run:
+          name: Turn on globstar
+          command: shopt -s globstar
+      - run:
           name: pa11y tests
           command: |
             node_modules/.bin/pa11y-ci ./_site/**.html
@@ -67,9 +70,6 @@ jobs:
       - run:
           name: ll
           command: ls -la
-      - run:
-          name: Turn on globstar
-          command: shopt -s globstar
       - run:
           name: Deploy infrastructure with CloudFormation
           command: |
