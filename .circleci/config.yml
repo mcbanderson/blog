@@ -49,6 +49,9 @@ jobs:
           name: Turn on globstar
           command: shopt -s globstar
       - run:
+          name: Confirm globstar
+          command: shopt
+      - run:
           name: pa11y tests
           command: |
             node_modules/.bin/pa11y-ci ./_site/**/*.html
