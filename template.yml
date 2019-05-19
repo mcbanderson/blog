@@ -53,7 +53,7 @@ Resources:
     Properties:
       DomainName: !Sub "${RootDomainName}"
       SubjectAlternativeNames:
-        - !Sub "*.${DomainName}"
+        - !Sub "*.${RootDomainName}"
       ValidationMethod: DNS
   CloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
