@@ -82,3 +82,6 @@ Outputs:
   WebsiteURL:
     Value: !GetAtt RootBucket.WebsiteURL
     Description: URL for website hosted on S3
+  DistributionId:
+    Value: !Ref CloudFrontDistribution
+    Description: Id for CloudFront distribution
