@@ -48,6 +48,46 @@ Resources:
       WebsiteConfiguration:
         RedirectAllRequestsTo:
           HostName: !Ref RootBucket
+  SSLCertificate:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName: !Sub "${RootDomainName}"
+      ValidationMethod: DNS
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Aliases:
+          - !Sub "cdn.${DomainName}"
+        DefaultCacheBehavior:
+          AllowedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+          TargetOriginId: s3_origin
+          ForwardedValues:
+            Headers:
+              - Origin
+              - Access-Control-Allow-Origin
+              - Access-Control-Request-Headers
+              - Access-Control-Request-Method
+              - Authorization
+            QueryString: 'false'
+          ViewerProtocolPolicy: allow-all
+        Enabled: true
+        Origins:
+          - DomainName: !GetAtt RootBucket.DomainName
+            Id: s3_origin
+            S3OriginConfig:
+              OriginAccessIdentity: !Sub 'origin-access-identity/cloudfront/${CloudFrontOriginAccessIdentity}'
+        ViewerCertificate:
+          AcmCertificateArn: !Ref SSLCertificate
+          SslSupportMethod: sni-only
+  CloudFrontOriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: CloudFront Origin Access Identity
   RecordSetGroup:
     Type: AWS::Route53::RecordSetGroup
     Properties:
@@ -59,15 +99,7 @@ Resources:
         Type: A
         AliasTarget:
           HostedZoneId: !FindInMap [ RegionMap, !Ref 'AWS::Region', S3hostedzoneID]
-          DNSName: !FindInMap [ RegionMap, !Ref 'AWS::Region', websiteendpoint]
-      -
-        Name: !Sub
-            - www.${Domain}
-            - Domain: !Ref RootDomainName
-        Type: CNAME
-        TTL: 900
-        ResourceRecords:
-        - !GetAtt WWWBucket.DomainName
+          DNSName: !GetAtt CloudFrontDistribution.DomainName
 Outputs:
   WebsiteURL:
     Value: !GetAtt RootBucket.WebsiteURL
