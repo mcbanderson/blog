@@ -52,7 +52,7 @@ Resources:
           ViewerProtocolPolicy: allow-all
         Enabled: true
         Origins:
-          - DomainName: !GetAtt RootBucket.WebsiteURL
+          - DomainName: !Select [2, !Split ["/", !GetAtt RootBucket.WebsiteURL]]
             Id: s3_origin
             CustomOriginConfig:
               HTTPPort: 80
