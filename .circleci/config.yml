@@ -76,7 +76,7 @@ jobs:
           command: ~/.local/bin/aws s3 sync ./_site s3://$SITE_URL/ --delete --acl public-read
       - run:
           name: Get CloudFront distribution id
-          command: echo 'export DISTRIBUTION_ID=$(~/.local/bin/aws cloudformation describe-stacks --region us-east-1 --stack-name $STACK_NAME --query "Stacks[0].Outputs[?OutputKey==`DistributionId`].OutputValue" --output text)' >> $BASH_ENV
+          command: echo "export DISTRIBUTION_ID=$(~/.local/bin/aws cloudformation describe-stacks --region us-east-1 --stack-name $STACK_NAME --query 'Stacks[0].Outputs[?OutputKey==`DistributionId`].OutputValue' --output text)" >> $BASH_ENV
       - run:
           name: Create CloudFront invalidation
           command: ~/.local/bin/aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/*"
