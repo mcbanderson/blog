@@ -70,6 +70,7 @@ jobs:
               --template-file template.yml \
               --no-fail-on-empty-changeset \
               --parameter-overrides RootDomainName=$SITE_URL
+          no_output_timeout: 60m
       - run:
           name: Upload to s3
           command: ~/.local/bin/aws s3 sync ./_site s3://$SITE_URL/ --delete --acl public-read
