@@ -58,7 +58,7 @@ Resources:
     Properties:
       DistributionConfig:
         Aliases:
-          - !Sub "cdn.${DomainName}"
+          - !Sub "cdn.${RootDomainName}"
         DefaultCacheBehavior:
           AllowedMethods:
             - GET
