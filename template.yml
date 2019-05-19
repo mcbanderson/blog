@@ -49,7 +49,7 @@ Resources:
               - Access-Control-Request-Method
               - Authorization
             QueryString: false
-          ViewerProtocolPolicy: allow-all
+          ViewerProtocolPolicy: redirect-to-https
         Enabled: true
         Origins:
           - DomainName: !Select [2, !Split ["/", !GetAtt RootBucket.WebsiteURL]]
